@@ -80,7 +80,35 @@ null.
 
 
 def pop_proportion(p_hat, p, n):
-    x = (p(1-p)/n)
-    z_naught = ((p_hat - p)/math.sqrt(x))
-    return z_naught
+    # x is the standard deviation of the formula
+        x = math.sqrt(p*(1-p)/n)
+        z_naught = (p_hat - p) / x
+        print("The z value is: ", z_naught)
 
+
+def t_distribution(p_hat, p, sd, n):
+        t = (p_hat-p)/(sd/math.sqrt(n))
+        print("The t value is, ", t)
+
+
+
+if __name__ == "__main__":
+    print("p_hat is the number your testing,\
+        p is the number your testing against, \
+        n is the number in your sample")
+
+    choice = input("Press 1 for z_score, 2 for t_distribution: ")
+    if choice =="1":
+        p_hat = float(input("Enter P_hat: "))
+        p = float(input("Enter p: "))
+        n = float(input("Enter number: "))
+        print(p_hat, p, n)
+        pop_proportion(p_hat, p, n)
+
+    elif choice == "2":
+        p_hat = float(input("Enter P_hat: "))
+        p = float(input("Enter p: "))
+        sd = float(input("Enter the standard deviation: "))
+        n = float(input("Enter number: "))
+        print(p_hat, p, sd, n)
+        t_distribution(p_hat, p, sd, n)
